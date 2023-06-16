@@ -1,0 +1,59 @@
+﻿@model EmployeCreateView
+@{
+    ViewData["Title"] = "Create";
+}
+@*@if (!(ViewBag.Error is null))
+{
+    <h3 class="alert alert-danger">@ViewBag.Error.Name</h3>
+}*@
+<form enctype="multipart/form-data" asp-action="Create" asp-controller="Employe" method="post">
+    <div class="form-row">
+        <div class="form-group">
+        <label asp-for="Name">Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" asp-for="Name"/>
+        <span asp-validation-for="Name" class="small text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="Email">Email <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email" class="small text-danger"></span>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="Age">Age  <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" asp-for="Age" />
+            <span asp-validation-for="Age"  class="small text-danger"></span>
+@*            <div class="small text-danger">
+                @Html.ValidationMessage("child")
+            </div>*@
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="Departement">Departement <span class="text-danger">*</span></label>
+        <select  class="form-control custom-select" asp-for="Departement" asp-items="Html.GetEnumSelectList<Departement>()">
+            <option selected disabled>-- Select Departement --</option>
+            </select>
+            <span asp-validation-for="Departement" class="small text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row my-3">
+        <div class="form-group">
+    <div class="input-group mb-3">
+        <input type="file" accept="image/*" class="form-control" id="inputGroupFile02" asp-for="Image">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </div>
+  
+        </div>
+    </div>
+    <div class="form-row my-3">
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+    </div>
+</form>

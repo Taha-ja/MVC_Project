@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<p class="alert alert-info my-5 text-bg-danger text-center">
+    Employes Company
+</p>
+<div class="row">
+ 
+        @foreach(Employe e in Model){
+        var image = e.Image != null ? "/Images/" + e.Image : "/Images/no-image-placeholder.webp";
+        <div class="col-12 col-sm-6 mb-2 col-lg-4">
+            <div class="card">
+                <img asp-append-version="true" src="@image" class="card-img-top img-fluid h-80 w-80" alt="@e.Name" />
+                <div class="card-body text-center">
+                    <h5 class="card-title">@e.Name</h5>
+                    <p class="card-text">
+                        @e.Email <br/>
+                        @e.Age <br />
+                        @e.Departement
+                    </p>
+                    <div class="text-white">
+                        <a class="btn btn-sm btn-primary"
+                           asp-action="Details"
+                           asp-controller="Employe"
+                           asp-route-id="@e.Id"
+                        >Details</a>
+                        <a class="btn btn-sm btn-secondary" asp-action="Update">Update</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="Employe" asp-action="Delete" asp-route-id="@e.Id">Delete</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        }
+
+</div>
+

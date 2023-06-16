@@ -1,0 +1,29 @@
+﻿@model Employe
+@{
+    ViewData["Title"] = "Details";
+    var image = Model.Image != null ? "/Images/" + Model.Image : "/Images/no-image-placeholder.webp";
+}
+<div class="row">
+    <div class="col-3 container">
+        <div class="card">
+            <img asp-append-version="true" src="@image" class="card-img-top" style="width:100%" alt="@Model.Name" />
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    @Model.Name
+                </h5>
+                <p class="card-text">
+                    Age:
+                    <span>
+                        @Model.Age 
+                    </span>
+                    <br />
+                    Email: @Model.Email
+                    <br />
+                    Departement: @Model.Departement
+                </p>
+
+                <a asp-action="Index" asp-controller="Employe" class="btn btn-sm btn-dark">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
